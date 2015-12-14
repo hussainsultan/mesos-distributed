@@ -1,6 +1,7 @@
 import unittest
 
 from mesos.interface import mesos_pb2
+
 from mesos.native import MesosSchedulerDriver
 
 from expects import expect, equal
@@ -21,4 +22,4 @@ class TestSchedulerDriver(unittest.TestCase):
 
         expect(framework.user).to(equal(""))
         expect(framework.name).to(equal('distributed-framework'))
-        expect(driver.call_args_list).to(equal([call(framework, scheduler(), mesos_master_uri)]))
+        expect(driver.call_args_list).to(equal([call(scheduler(), framework, mesos_master_uri)]))
