@@ -10,6 +10,4 @@ class DistributedDriver(object):
         self.framework.name = 'distributed-framework'
 
     def create_driver(self, scheduler):
-        print self.framework
-        print scheduler
-        return self.mesos_scheduler_driver(scheduler(), self.framework, '127.0.0.1:5050')
+        return self.mesos_scheduler_driver(scheduler(), self.framework, '172.17.0.4:5050')
