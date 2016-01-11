@@ -3,7 +3,7 @@ import unittest
 from mesos.interface import mesos_pb2
 
 from expects import expect, equal
-from framework.task_builder import TaskDirector, WorkerTask, CenterTask
+from framework.task_builder import TaskDirector, WorkerTask, SchedulerTask
 from mock import MagicMock
 
 
@@ -22,11 +22,12 @@ class TestTaskDirector(unittest.TestCase):
 
         expect(mesos_task.resources[0].name).to(equal('cpus'))
         expect(mesos_task.resources[0].type).to(equal(mesos_pb2.Value.SCALAR))
-        expect(mesos_task.resources[0].scalar.value).to(equal(1))
+        expect(mesos_task.resources[0].scalar.value).to(equal(2))
 
         expect(mesos_task.resources[1].name).to(equal('mem'))
         expect(mesos_task.resources[1].type).to(equal(mesos_pb2.Value.SCALAR))
-        expect(mesos_task.resources[1].scalar.value).to(equal(1000))
+        expect(mesos_task.resources[1].scalar.value).to(equal(128))
+
 
     def test_task_has_command_to_launch_dworkers(self):
         offer = MagicMock()
@@ -44,6 +45,6 @@ class TestTaskDirector(unittest.TestCase):
         offer.slave_id = MagicMock()
         offer.slave_id.value = 'slave-id'
 
-        mesos_task = TaskDirector(offer,CenterTask).make_task_with_id('task-id')
+        mesos_task = TaskDirector(offer,SchedulerTask).make_task_with_id('task-id')
 
-        expect(mesos_task.command.value).to(equal('dcenter'))
+        expect(mesos_task.command.value).to(equal('dscheduler'))
