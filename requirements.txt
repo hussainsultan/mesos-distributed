@@ -11,7 +11,6 @@ expects==0.7.2
 funcsigs==0.4
 futures==3.0.3
 google-common==0.0.1
-mesos==0.25.0
 mesos.cli==0.25.0
 mesos.interface==0.25.0
 mesos.native==0.25.0
