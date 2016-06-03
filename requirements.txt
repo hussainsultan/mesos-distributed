@@ -11,10 +11,10 @@ expects==0.7.2
 funcsigs==0.4
 futures==3.0.3
 google-common==0.0.1
-mesos==0.25.0
-mesos.cli==0.25.0
-mesos.interface==0.25.0
-mesos.native==0.25.0
+mesos==0.26.0
+mesos.cli==0.26.0
+mesos.interface==0.26.0
+mesos.native==0.26.0
 mock==1.3.0
 paramiko==1.16.0
 pbr==1.8.1
